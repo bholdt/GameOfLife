@@ -45,6 +45,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="MoreThanThreeNeighbourRuleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TwoOrThreeNeighbourRuleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

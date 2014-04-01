@@ -46,24 +46,32 @@ namespace GameOfLife.Tests
         {
             return new FakeCellLocation(neighbours);
         }
+
+        public static ICellLocation CreateWithNeighbours(params ICellLocation[] locations)
+        {
+            return new FakeCellLocation(locations);
+        }
     }
 
     public class FakeCellLocation : ICellLocation
     {
-        private readonly int _neighbours;
+        private IList<ICellLocation> _neighbours = new List<ICellLocation>(); 
 
         public FakeCellLocation(int neighbours)
         {
-            _neighbours = neighbours;
+            for (int i = 0; i < neighbours; i++)
+            {
+                _neighbours.Add(new FakeCellLocation(new ICellLocation[0]));
+            }
         }
-
+        public FakeCellLocation(IEnumerable<ICellLocation> locations)
+        {
+            _neighbours = locations.ToList();
+        }
 
         public IEnumerable<ICellLocation> Neighbours()
         {
-            for (int i = 0; i < _neighbours; i++)
-            {
-                yield return new FakeCellLocation(0);
-            }
+            return _neighbours;
         }
     }
 
