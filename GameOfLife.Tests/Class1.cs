@@ -24,7 +24,7 @@ namespace GameOfLife.Tests
         }
 
         [Test]
-        public void CellsWithTwoOrMoreNeighbours_ShouldNotDie()
+        public void CellsWithTwoOrMoreNeighbours_ShouldStayAlive()
         {
             var rule = new LessThanTwoNeighboursRule();
 
@@ -72,7 +72,7 @@ namespace GameOfLife.Tests
         IEnumerable<ICellLocation> Neighbours();
     }
 
-    public class LessThanTwoNeighboursRule
+    public class LessThanTwoNeighboursRule : IGameRule
     {
         public IEnumerable<ICellLocation> Apply(IEnumerable<ICellLocation> liveCells)
         {
